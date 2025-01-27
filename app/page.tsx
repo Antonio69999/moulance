@@ -13,7 +13,7 @@ export default function Home() {
                   Bienvenue !
                 </span>
                 <p className="text-black font-extrabold mt-8 text-4xl tracking-tight">
-                  C&apos;est parti pour rentrer un
+                  C'est parti pour rentrer un
                   <span className="lg:block"> max de moula.</span>
                 </p>
               </div>
@@ -25,7 +25,7 @@ export default function Home() {
                   }
                   href="/dashboard"
                 >
-                  Let&apos;s Go
+                  Let's Go &nbsp;&nbsp;
                   <span className="font-bold text-2xl">→</span>
                 </Link>
               </div>
