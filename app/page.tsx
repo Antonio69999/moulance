@@ -23,7 +23,7 @@ export default function Home() {
                     buttonVariants({ variant: "outline" }) +
                     " w-full items-center inline-flex duration-200 focus:outline-hidden font-medium justify-center px-8 py-4 rounded-xl text-center focus-visible:outline-black lg:w-auto bg-rose-500 focus-visible:ring-black hover:bg-rose-100 hover:text-rose-500 text-white text-lg"
                   }
-                  href="/dashboard"
+                  href="/login"
                 >
                   Let's Go &nbsp;&nbsp;
                   <span className="font-bold text-2xl">→</span>
