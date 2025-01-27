@@ -25,7 +25,7 @@ export default function Home() {
                   }
                   href="/dashboard"
                 >
-                  Let's Go &nbsp;&nbsp;
+                  Let's Go
                   <span className="font-bold text-2xl">→</span>
                 </Link>
               </div>
