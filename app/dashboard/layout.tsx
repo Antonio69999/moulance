@@ -95,7 +95,7 @@ export default function Layout({ children }: LayoutProps) {
               <span className="ml-auto">›</span>
             </Link>
             <form
-              action={async (formData) => {
+              action={async () => {
                 await logout();
               }}
               className="flex items-center text-gray-600 hover:text-red-500 py-4 transition-all duration-300 hover:translate-x-1 w-full"

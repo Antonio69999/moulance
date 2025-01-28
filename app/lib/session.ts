@@ -16,10 +16,10 @@ export async function encrypt(payload: SessionPayload) {
 export async function decrypt(session: string | undefined = "") {
   try {
     const { payload } = await jwtVerify(session, encodedKey, {
-      algorithms: ["HS256xx"],
+      algorithms: ["HS256"],
     });
     return payload;
-  } catch (error) {
+  } catch {
     console.log("Failed to verify session");
   }
 }
