@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn, register } from "@/auth";
+import { signIn, register, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 
 export async function authenticate(
@@ -41,6 +41,15 @@ export async function registerUser(
         return "User already exists.";
       }
     }
+    throw error;
+  }
+}
+
+export async function logout(): Promise<void> {
+  try {
+    await signOut({ redirectTo: "/" });
+  } catch (error) {
+    console.log("Error signing out:", error);
     throw error;
   }
 }

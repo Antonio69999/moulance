@@ -2,8 +2,8 @@
 
 import { ReactNode, useState } from "react";
 import Link from "next/link";
-import * as SolidIcons from "@heroicons/react/24/solid";
 import * as OutlineIcons from "@heroicons/react/24/outline";
+import { logout } from "@/app/lib/actions"; // Import the logout function
 
 interface LayoutProps {
   children: ReactNode;
@@ -94,14 +94,18 @@ export default function Layout({ children }: LayoutProps) {
               Settings
               <span className="ml-auto">›</span>
             </Link>
-            <Link
-              href="#"
-              className="flex items-center text-gray-600 hover:text-red-500 py-4 transition-all duration-300 hover:translate-x-1"
+            <form
+              action={async (formData) => {
+                await logout();
+              }}
+              className="flex items-center text-gray-600 hover:text-red-500 py-4 transition-all duration-300 hover:translate-x-1 w-full"
             >
-              <OutlineIcons.ArrowLeftEndOnRectangleIcon className="h-5 w-5 mr-2" />
-              Log out
-              <span className="ml-auto">›</span>
-            </Link>
+              <button type="submit" className="flex items-center w-full">
+                <OutlineIcons.ArrowLeftEndOnRectangleIcon className="h-5 w-5 mr-2" />
+                Log out
+                <span className="ml-auto">›</span>
+              </button>
+            </form>
           </div>
         </aside>
 
