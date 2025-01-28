@@ -5,6 +5,9 @@ import { z } from "zod";
 import { sql } from "@vercel/postgres";
 import type { User } from "@/app/lib/definitions";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = process.env.JWT_SECRET || "";
 
 async function getUser(username: string): Promise<User | undefined> {
   try {
@@ -56,7 +59,14 @@ export const { auth, signIn, signOut } = NextAuth({
           const passwordsMatch = await bcrypt.compare(password, user.password);
           if (passwordsMatch) {
             console.log("Passwords match");
-            return user;
+            const token = jwt.sign(
+              { id: user.id, username: user.username },
+              JWT_SECRET,
+              {
+                expiresIn: "1h",
+              }
+            );
+            return { ...user, token };
           } else {
             console.log("Passwords do not match");
           }
@@ -80,4 +90,14 @@ export async function register(
     throw new Error("User already exists.");
   }
   return createUser(username, password);
+}
+
+export async function verifyToken(token: string) {
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    return decoded;
+  } catch (error) {
+    console.error("Invalid token:", error);
+    return null;
+  }
 }
